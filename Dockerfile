@@ -29,7 +29,8 @@ RUN cmake \
   -DGGML_STATIC=ON \
   -DGGML_OPENMP=OFF \
   -DGGML_NATIVE=OFF \
-  -DGGML_AVX=ON \
+  -DGGML_AVX=OFF \
+  -DGGML_AVX2=ON \
   ..
   
 RUN make -j$(nproc)
