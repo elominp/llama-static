@@ -5,6 +5,7 @@ on:
     types: [published]
     repositories:
       - ggerganov/llama.cpp
+  workflow_dispatch:
 
 jobs:
   build:
