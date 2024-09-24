@@ -16,18 +16,20 @@ WORKDIR /llama.cpp/build
 
 RUN cmake \
   -DBUILD_SHARED_LIBS=OFF \
-  -DCMAKE_BUILD_Type=MinSizeRel \
-  -DCMAKE_C_FLAGS=-static \
-  -DCMAKE_CXX_FLAGS=-static \
-  -DCMAKE_EXE_LINKER_FLAGS=-static \
+  -DCMAKE_BUILD_TYPE=MinSizeRel \
+  -DCMAKE_C_FLAGS="-static -march=haswell" \
+  -DCMAKE_CXX_FLAGS="-static -march=haswell" \
+  -DCMAKE_EXE_LINKER_FLAGS="-static -march=haswell" \
   -DCMAKE_INSTALL_PREFIX=/llama.cpp/dist \
-  -DACCELERATE=OFF \
+  -DGGML_ACCELERATE=OFF \
   -DGGML_LASX=OFF \
   -DGGML_LLAMAFILE=OFF \
   -DGGML_LSX=OFF \
   -DGGML_LTO=ON \
   -DGGML_STATIC=ON \
   -DGGML_OPENMP=OFF \
+  -DGGML_NATIVE=OFF \
+  -DGGML_AVX=ON \
   ..
   
 RUN make -j$(nproc)
