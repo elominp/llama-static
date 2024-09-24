@@ -41,7 +41,7 @@ WORKDIR /llama.cpp/dist/bin
 
 RUN strip * || echo "[Warning] Failed to strip some files"
 
-# RUN echo 'for f in ./*; do upx -9 $f; done' | bash
+RUN echo 'for f in ./*; do upx -9 $f; done' | bash
 
 # Runtime image
 
