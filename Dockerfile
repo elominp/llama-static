@@ -44,8 +44,8 @@ RUN echo 'for f in ./*; do upx -9 $f; done' | bash
 
 FROM scratch
 
-COPY --from=build /llama.cpp/dist/bin/llama-server /llama-server
+COPY --from=build /llama.cpp/dist/bin /bin
 
-ENTRYPOINT [ "/llama-server" ]
+ENTRYPOINT [ "/bin/llama-server" ]
 
 CMD [ "-h" ]
